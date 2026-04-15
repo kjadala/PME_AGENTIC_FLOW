@@ -1,0 +1,42 @@
+{
+  "servers": {
+    "selenium": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@angiejones/mcp-selenium"
+      ],
+      "type": "stdio"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "type": "stdio"
+    },
+    "rpdevops": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@architecture/mcp-server-azuredevops@latest",
+        "Realpage"
+      ],
+      "env": {
+        "npm_config_registry": "https://artifacts.realpage.com/artifactory/api/npm/npm-virtual/",
+        "AZDO_BASE_URL": "https://tfs.realpage.com/tfs",
+        "AZDO_PAT": "${env:AZDO_PAT}",
+        "AZDO_PROJECT": "${input:azdo_project}"
+      },
+      "type": "stdio"
+    }
+  },
+  "inputs": [
+    {
+      "id": "azdo_project",
+      "type": "promptString",
+      "description": "Azure DevOps project name (e.g. Consumer Solutions)",
+      "default": "Consumer Solutions"
+    }
+  ]
+}

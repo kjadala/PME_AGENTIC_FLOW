@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "selenium": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@angiejones/mcp-selenium"
+      ]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    },
+    "rpdevops": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@architecture/mcp-server-azuredevops@latest",
+        "Realpage"
+      ],
+      "env": {
+        "npm_config_registry": "https://artifacts.realpage.com/artifactory/api/npm/npm-virtual/",
+        "AZDO_BASE_URL": "https://tfs.realpage.com/tfs",
+        "AZDO_PAT": "${AZDO_PAT}",
+        "AZDO_PROJECT": "Consumer Solutions"
+      }
+    }
+  }
+}
